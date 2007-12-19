@@ -1,5 +1,5 @@
 %define version	0.3.191
-%define release	%mkrel 1
+%define release	%mkrel 2
 
 %define chewing_version	        0.3.091
 %define scim_version		1.4.5
