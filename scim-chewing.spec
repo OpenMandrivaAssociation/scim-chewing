@@ -15,6 +15,7 @@ Group:		System/Internationalization
 License:	GPL
 URL:		http://chewing.csie.net/
 Source0:	%{name}-%{version}.tar.bz2
+BuildRoot:	%{_tmppath}/%{name}-%{version}-%{release}-root
 Requires:	libchewing >= %{chewing_version}
 Requires:	scim >= %{scim_version}
 BuildRequires:  libchewing-devel >= %{chewing_version}
