@@ -21,7 +21,7 @@ Requires:	libchewing >= %{chewing_version}
 Requires:	scim >= %{scim_version}
 BuildRequires:  libchewing-devel >= %{chewing_version}
 BuildRequires:  scim-devel >= %{scim_version}
-BuildRequires:  intltool
+BuildRequires:  intltool gettext-devel
 
 # compatibility
 Obsoletes:	%mklibname %{name} 0
