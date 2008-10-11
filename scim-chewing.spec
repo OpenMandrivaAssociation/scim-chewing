@@ -1,8 +1,6 @@
-%define version	0.3.191
-%define svnrel 830
-%define release	%mkrel 2.%{svnrel}.1
+%define version	0.3.2
 
-%define chewing_version	        0.3.091
+%define chewing_version	        0.3.1
 %define scim_version		1.4.5
 
 %define libname_orig lib%{name}
@@ -10,19 +8,20 @@
 
 Name:		scim-chewing
 Summary:	SCIM IMEngine module for chewing
+Epoch:		1
 Version:	%{version}
-Release:	%{release}
+Release:	%{mkrel 1}
 Group:		System/Internationalization
-License:	GPL
+License:	GPL2+
 URL:		http://chewing.csie.net/
-Source0:	%{name}-%{version}-r%{svnrel}.tar.bz2
+Source0:	http://chewing.csie.net/download/scim/%name-%version.tar.bz2
 BuildRoot:	%{_tmppath}/%{name}-%{version}-%{release}-root
-Requires:	libchewing >= %{chewing_version}
+Requires:	libchewing >= 1:%{chewing_version}
 Requires:	scim >= %{scim_version}
 BuildRequires:  libchewing-devel >= %{chewing_version}
 BuildRequires:  scim-devel >= %{scim_version}
 BuildRequires:  intltool gettext-devel
-
+BuildRequires:	libtool
 # compatibility
 Obsoletes:	%mklibname %{name} 0
 
@@ -30,18 +29,17 @@ Obsoletes:	%mklibname %{name} 0
 Scim-chewing is an SCIM IMEngine module for chewing,
 an intelligent Chinese phonetic input method.
 
-
 %prep
-%setup -q -n %name
+%setup -q -n %name-%version
 
 %build
 ./autogen.sh AM_VERSION=""
 %configure2_5x
-%make
+%make LIBTOOL=%_bindir/libtool
 
 %install
 rm -rf %{buildroot}
-%makeinstall_std
+%makeinstall_std LIBTOOL=%_bindir/libtool
 
 # remove unnecessary files
 rm -f %{buildroot}%{_libdir}/scim-1.0/*/*/*.{a,la}
