@@ -1,6 +1,6 @@
-%define version	0.3.2
+%define version	0.3.3
 
-%define chewing_version	        0.3.1
+%define chewing_version	        0.3.2
 %define scim_version		1.4.5
 
 %define libname_orig lib%{name}
@@ -10,18 +10,18 @@ Name:		scim-chewing
 Summary:	SCIM IMEngine module for chewing
 Epoch:		1
 Version:	%{version}
-Release:	%{mkrel 1}
+Release:	%mkrel 1
 Group:		System/Internationalization
 License:	GPL2+
 URL:		http://chewing.csie.net/
 Source0:	http://chewing.csie.net/download/scim/%name-%version.tar.bz2
+Patch0:		scim-chewing-0.3.2-fix-linkage.patch
 BuildRoot:	%{_tmppath}/%{name}-%{version}-%{release}-root
 Requires:	libchewing >= 1:%{chewing_version}
 Requires:	scim >= %{scim_version}
 BuildRequires:  libchewing-devel >= %{chewing_version}
 BuildRequires:  scim-devel >= %{scim_version}
 BuildRequires:  intltool gettext-devel
-BuildRequires:	libtool
 # compatibility
 Obsoletes:	%mklibname %{name} 0
 
@@ -31,15 +31,16 @@ an intelligent Chinese phonetic input method.
 
 %prep
 %setup -q -n %name-%version
+%patch0 -p0
 
 %build
 ./autogen.sh AM_VERSION=""
 %configure2_5x
-%make LIBTOOL=%_bindir/libtool
+%make
 
 %install
 rm -rf %{buildroot}
-%makeinstall_std LIBTOOL=%_bindir/libtool
+%makeinstall_std
 
 # remove unnecessary files
 rm -f %{buildroot}%{_libdir}/scim-1.0/*/*/*.{a,la}
@@ -55,5 +56,3 @@ rm -rf %{buildroot}
 %{_datadir}/scim/icons/*
 %{_libdir}/scim-1.0/*/IMEngine/*.so
 %{_libdir}/scim-1.0/*/SetupUI/*.so
-
-
