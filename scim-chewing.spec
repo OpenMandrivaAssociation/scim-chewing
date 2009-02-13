@@ -22,6 +22,7 @@ Requires:	scim-client = %scim_api
 BuildRequires:  libchewing-devel >= %{chewing_version}
 BuildRequires:  scim-devel >= %{scim_version}
 BuildRequires:  intltool gettext-devel
+BuildRequires:	libtool
 # compatibility
 Obsoletes:	%mklibname %{name} 0
 
@@ -36,11 +37,11 @@ an intelligent Chinese phonetic input method.
 %build
 ./autogen.sh AM_VERSION=""
 %configure2_5x
-%make
+%make LIBTOOL=%_bindir/libtool
 
 %install
 rm -rf %{buildroot}
-%makeinstall_std
+%makeinstall_std LIBTOOL=%_bindir/libtool
 
 # remove unnecessary files
 rm -f %{buildroot}%{_libdir}/scim-1.0/*/*/*.{a,la}
