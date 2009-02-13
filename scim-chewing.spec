@@ -10,7 +10,7 @@ Name:		scim-chewing
 Summary:	SCIM IMEngine module for chewing
 Epoch:		1
 Version:	%{version}
-Release:	%mkrel 3
+Release:	%mkrel 4
 Group:		System/Internationalization
 License:	GPL2+
 URL:		http://chewing.csie.net/
@@ -22,7 +22,6 @@ Requires:	scim-client = %scim_api
 BuildRequires:  libchewing-devel >= %{chewing_version}
 BuildRequires:  scim-devel >= %{scim_version}
 BuildRequires:  intltool gettext-devel
-BuildRequires:	libtool
 # compatibility
 Obsoletes:	%mklibname %{name} 0
 
@@ -32,16 +31,15 @@ an intelligent Chinese phonetic input method.
 
 %prep
 %setup -q -n %name-%version
-%patch0 -p0
+%patch0 -p0 -b .linkage
 
 %build
-./autogen.sh AM_VERSION=""
 %configure2_5x
-%make LIBTOOL=%_bindir/libtool
+%make
 
 %install
 rm -rf %{buildroot}
-%makeinstall_std LIBTOOL=%_bindir/libtool
+%makeinstall_std
 
 # remove unnecessary files
 rm -f %{buildroot}%{_libdir}/scim-1.0/*/*/*.{a,la}
