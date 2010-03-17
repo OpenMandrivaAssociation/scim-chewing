@@ -10,7 +10,7 @@ Name:		scim-chewing
 Summary:	SCIM IMEngine module for chewing
 Epoch:		1
 Version:	%{version}
-Release:	%mkrel 4
+Release:	%mkrel 5
 Group:		System/Internationalization
 License:	GPL2+
 URL:		http://chewing.csie.net/
