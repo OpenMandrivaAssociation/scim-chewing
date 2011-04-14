@@ -1,6 +1,6 @@
-%define version	0.3.3
+%define version	0.3.4
 
-%define chewing_version	        0.3.2
+%define chewing_version	        0.3.3
 %define scim_version		1.4.5
 
 %define libname_orig lib%{name}
@@ -10,7 +10,7 @@ Name:		scim-chewing
 Summary:	SCIM IMEngine module for chewing
 Epoch:		1
 Version:	%{version}
-Release:	%mkrel 6
+Release:	%mkrel 1
 Group:		System/Internationalization
 License:	GPL2+
 URL:		http://chewing.csie.net/
