@@ -13,7 +13,7 @@ Version:	%{version}
 Release:	%mkrel 1
 Group:		System/Internationalization
 License:	GPL2+
-URL:		http://chewing.csie.net/
+URL:		https://chewing.csie.net/
 Source0:	http://chewing.csie.net/download/scim/%name-%version.tar.bz2
 Patch0:		scim-chewing-0.3.2-fix-linkage.patch
 BuildRoot:	%{_tmppath}/%{name}-%{version}-%{release}-root
