@@ -19,6 +19,11 @@ Patch0:		scim-chewing-0.3.2-fix-linkage.patch
 BuildRoot:	%{_tmppath}/%{name}-%{version}-%{release}-root
 Requires:	libchewing >= 1:%{chewing_version}
 Requires:	scim-client = %scim_api
+BuildRequires:	autoconf
+BuildRequires:	automake
+BuildRequires:	libtool-base
+BuildRequires:	slibtool
+BuildRequires:	make
 BuildRequires:  libchewing-devel >= %{chewing_version}
 BuildRequires:  scim-devel >= %{scim_version}
 BuildRequires:  intltool gettext-devel
